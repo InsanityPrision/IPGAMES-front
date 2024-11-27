@@ -9,5 +9,10 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: ["src/setUpTests.ts"],
+    coverage: {
+      include: ["src/**/**.ts", "src/**/**.tsx"],
+      exclude: ["src/main.tsx", "src/vite-env.d.ts", "src/**/**.test.tsx"],
+      reporter: ["lcov", "html"],
+    },
   },
 });
