@@ -10,7 +10,7 @@ if (!root) {
   throw new Error("Missing root element");
 }
 
-createRoot(root!).render(
+createRoot(root).render(
   <StrictMode>
     <App />
   </StrictMode>
