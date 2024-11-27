@@ -1,5 +1,7 @@
+import Header from "../Header/Header";
+
 const App: React.FC = () => {
-  return <div className="container"></div>;
+  return <Header />;
 };
 
 export default App;
