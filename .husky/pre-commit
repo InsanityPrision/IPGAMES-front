@@ -4,3 +4,7 @@ if [ "$branch" = "master" ] || [ "$branch" = "main" ]; then
   echo "You can't commit directly to main branch"
   exit 1
 fi
+
+exec >/dev/tty 2>&1
+
+npx lint-staged
