@@ -1,9 +1,5 @@
 const GameListPage: React.FC = () => {
-  return (
-    <main className="main-container">
-      <h1>Games</h1>
-    </main>
-  );
+  return <h1>Games</h1>;
 };
 
 export default GameListPage;
