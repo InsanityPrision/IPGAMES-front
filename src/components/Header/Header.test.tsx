@@ -3,10 +3,10 @@ import Header from "./Header";
 
 describe("Given the Header component", () => {
   describe("When it rendered", () => {
-    test("Then it should show 'IPGAMES' in ha heading", async () => {
+    test("Then it should show 'IPGAMES' in ha heading", () => {
       render(<Header />);
 
-      const headerTitle = await screen.findByText(/ipgames/i);
+      const headerTitle = screen.getByText(/ipgames/i);
 
       expect(headerTitle).toBeInTheDocument();
     });
