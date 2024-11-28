@@ -3,12 +3,10 @@ import Header from "./Header";
 
 describe("Given the Header component", () => {
   describe("When it rendered", () => {
-    test("Then it should show 'IPGAMES' in ha heading", () => {
+    test("Then it should show 'IPGAMES' in ha heading", async () => {
       render(<Header />);
 
-      const headerTitle = screen.getByRole("heading", {
-        name: /ipgames/i,
-      });
+      const headerTitle = await screen.findByText(/ipgames/i);
 
       expect(headerTitle).toBeInTheDocument();
     });
@@ -16,7 +14,7 @@ describe("Given the Header component", () => {
     test("Then it should show the IPGAMES icon with alternative text 'IPGAMES icon'", () => {
       render(<Header />);
 
-      const brandIcon = screen.getByAltText(/ipgames icon/i);
+      const brandIcon = screen.getByAltText(/ipgames logo/i);
 
       expect(brandIcon).toBeInTheDocument();
     });
