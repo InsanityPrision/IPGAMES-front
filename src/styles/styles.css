@@ -1,3 +1,7 @@
+:root {
+  --main-color: #dce5e5;
+}
+
 *,
 ::after,
 ::before {
@@ -14,7 +18,16 @@ h1 {
   font-size: 1.5rem;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .root {
   max-width: 600px;
+  height: 100vh;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

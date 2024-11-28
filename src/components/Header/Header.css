@@ -1,5 +1,5 @@
 .header {
-  background-color: #dce5e5;
+  background-color: var(--main-color);
   display: flex;
   justify-content: center;
   height: 50px;

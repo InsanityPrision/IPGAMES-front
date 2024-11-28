@@ -1,0 +1,35 @@
+.navMenu-container {
+  height: 60.8px;
+  background-color: var(--main-color);
+  padding: 7.9px 38px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.navMenu-container__link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  padding: 0px 7px;
+  height: 45px;
+}
+
+.navMenu-container__text {
+  height: 15px;
+  font-weight: 500;
+}
+
+.active::after {
+  content: "";
+  height: 3px;
+  width: 41px;
+  position: fixed;
+  bottom: 57px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #000;
+}
