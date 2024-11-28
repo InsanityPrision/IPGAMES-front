@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./Components/App/App";
+import App from "./components/App/App";
 import "@fontsource/poppins/index.css";
 import "./styles/styles.css";
 
@@ -13,5 +13,5 @@ if (!root) {
 createRoot(root).render(
   <StrictMode>
     <App />
-  </StrictMode>
+  </StrictMode>,
 );
