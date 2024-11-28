@@ -18,7 +18,13 @@
   height: 45px;
 }
 
-.navMenu-container__link--active {
+.navMenu-container__text {
+  height: 15px;
+  font-weight: 500;
+}
+
+.active::after {
+  content: "";
   height: 3px;
   width: 41px;
   position: fixed;
@@ -26,9 +32,4 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   background-color: #000;
-}
-
-.navMenu-container__text {
-  height: 15px;
-  font-weight: 500;
 }
