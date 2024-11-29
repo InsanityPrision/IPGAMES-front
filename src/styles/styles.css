@@ -23,6 +23,12 @@ a {
   color: inherit;
 }
 
+p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
 .root {
   max-width: 600px;
   height: 100vh;
