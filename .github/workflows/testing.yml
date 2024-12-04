@@ -1,5 +1,8 @@
 name: Testing
 
+env:
+  VITE_API_REST_URL: ${{ vars.VITE_API_REST_URL }}
+
 on: push
 
 jobs:
