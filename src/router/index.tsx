@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import App from "../components/App/App";
-import GameListPage from "../games/pages/GameListPage/GameListPage";
+import GameListPage from "../game/pages/GameListPage/GameListPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 const router = createBrowserRouter(
