@@ -25,7 +25,7 @@ describe("Given the NavMenu component", () => {
         </MemoryRouter>,
       );
 
-      const homeIcon = screen.getByAltText(/home icon/i);
+      const homeIcon = screen.getByAltText(/go to home/i);
 
       expect(homeIcon).toBeInTheDocument();
     });
