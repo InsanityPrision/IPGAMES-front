@@ -1,21 +1,18 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Navigate,
-  Route,
-} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router";
 import App from "../components/App/App";
 import GameListPage from "../game/pages/GameListPage/GameListPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index element={<Navigate to={"/games"} />} />
-      <Route path="games" element={<GameListPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Route>,
-  ),
-);
+const AppRouter: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Navigate to={"/games"} />} />
+        <Route path="games" element={<GameListPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
+  );
+};
 
-export default router;
+export default AppRouter;
