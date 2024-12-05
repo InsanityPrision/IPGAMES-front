@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  position: relative;
 }
 
 .navMenu-container__link {
@@ -22,7 +23,7 @@
   content: "";
   height: 3px;
   width: 41px;
-  position: fixed;
+  position: absolute;
   bottom: 57px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
