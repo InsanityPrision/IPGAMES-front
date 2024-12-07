@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router";
 import App from "../components/App/App";
-import GameListPage from "../game/pages/GameListPage/GameListPage";
+import GameListPage from "../game/pages/GamesListPage/GamesListPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 const AppRouter: React.FC = () => {

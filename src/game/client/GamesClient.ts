@@ -1,7 +1,7 @@
 import { Game } from "../types";
 import { GameClientStructure } from "./types";
 
-class GamesClient implements GameClientStructure {
+export class GamesClient implements GameClientStructure {
   private readonly apiRestUrl = import.meta.env.VITE_API_REST_URL;
 
   async getGames(): Promise<Game[]> {
@@ -13,4 +13,4 @@ class GamesClient implements GameClientStructure {
   }
 }
 
-export default GamesClient;
+export const gamesClient = new GamesClient();

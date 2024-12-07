@@ -1,4 +1,4 @@
-import GamesClient from "../GamesClient";
+import { GamesClient } from "../GamesClient";
 
 describe("Given the getGames method of gameClient class", () => {
   describe("When is called", () => {
