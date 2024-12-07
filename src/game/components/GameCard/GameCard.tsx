@@ -24,7 +24,12 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
             {starsCount.map((_starCount, index) => {
               return (
                 <li key={index}>
-                  <img src="/star.svg" alt={`Rated level ${index + 1}`} />
+                  <img
+                    src="/star.svg"
+                    alt={`Rated level ${index + 1}`}
+                    width={11}
+                    height={10}
+                  />
                 </li>
               );
             })}
