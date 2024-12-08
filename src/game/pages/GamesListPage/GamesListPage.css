@@ -1,5 +1,5 @@
 .Toastify__toast-container {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,11 @@
   bottom: 0;
   right: 0;
   left: 0;
+  width: 100%;
+}
+
+.Toastify__toast-container--top-center {
+  transform: translate(0);
 }
 
 .Toastify__toast {
@@ -19,6 +24,7 @@
   font-size: 1.5rem;
   color: #000;
   padding: 18px;
+  border-radius: 0;
 }
 
 .Toastify__toast-body {
