@@ -18,7 +18,7 @@ const GameListPage: React.FC = () => {
           render() {
             return "Loading games...";
           },
-          icon: () => <span className="loader"></span>,
+          icon: () => <span aria-label="Loading" className="loader"></span>,
         },
         error: {
           render() {
