@@ -16,7 +16,7 @@ export const handlers = [
           date: new Date(),
           genders: [],
           imageUrl: "",
-          imageAlt: "",
+          imageAlt: "Subnautica cover",
         },
         {
           _id: "12azxcq",
@@ -29,7 +29,7 @@ export const handlers = [
           date: new Date(),
           genders: [],
           imageUrl: "",
-          imageAlt: "",
+          imageAlt: "Minecraft cover",
         },
       ],
     });
