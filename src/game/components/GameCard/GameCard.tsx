@@ -14,8 +14,8 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
         className="game-card__image"
         src={game.imageUrl}
         alt={game.imageAlt}
-        width={250}
-        height={135}
+        width={380}
+        height={192}
       />
       <div>
         <div className="game-card__header">
