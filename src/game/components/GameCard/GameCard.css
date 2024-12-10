@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  font-weight: 500;
 }
 
 .game-card__image {
@@ -35,6 +34,11 @@
   gap: 5px;
 }
 
-.game-card__price-number {
-  font-weight: 300;
+.game-card__price-title {
+  font-weight: 500;
+}
+
+.game-card__price-number--free {
+  color: #217d1e;
+  font-weight: bold;
 }
