@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import GameListPage from "./GamesListPage";
 import { Provider } from "react-redux";
-import { store } from "../../store";
+import { store } from "../../../store";
 
 describe("Given the GameListPage component", () => {
   describe("When rendered", () => {
@@ -17,6 +17,18 @@ describe("Given the GameListPage component", () => {
       });
 
       expect(gameListPageTitle).toBeInTheDocument();
+    });
+
+    test("Then it should show a loading", () => {
+      render(
+        <Provider store={store}>
+          <GameListPage />
+        </Provider>,
+      );
+
+      const loading = screen.getByLabelText(/loading/i);
+
+      expect(loading).toBeInTheDocument();
     });
   });
 
