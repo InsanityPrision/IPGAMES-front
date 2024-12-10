@@ -18,13 +18,13 @@ const GameListPage: React.FC = () => {
           render() {
             return "Loading games...";
           },
-          icon: () => <span aria-label="Loading" className="loader"></span>,
+          icon: <span aria-label="Loading" className="loader"></span>,
         },
         error: {
           render() {
             return "Failed loading games";
           },
-          icon: () => <img src="/error.svg" alt="" />,
+          icon: <img src="/error.svg" alt="" />,
         },
       },
       {
