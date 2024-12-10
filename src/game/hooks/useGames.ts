@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { loadGames as loadGamesActionCreator } from "../slice/gamesSlice";
 import { gamesClient } from "../client/GamesClient";
 
