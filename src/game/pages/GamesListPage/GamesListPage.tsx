@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import GamesCardsList from "../../components/GamesCardsList/GamesCardsList";
 import useGames from "../../hooks/useGames";
-import "react-toastify/dist/ReactToastify.css";
 import "./GamesListPage.css";
 
 const GameListPage: React.FC = () => {
@@ -37,12 +36,6 @@ const GameListPage: React.FC = () => {
     <>
       <h1 className="page-title">Games</h1>
       <GamesCardsList games={games} />
-      <ToastContainer
-        position="top-center"
-        hideProgressBar={true}
-        autoClose={false}
-        icon={false}
-      />
     </>
   );
 };
