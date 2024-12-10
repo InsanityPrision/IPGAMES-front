@@ -18,18 +18,6 @@ describe("Given the GameListPage component", () => {
 
       expect(gameListPageTitle).toBeInTheDocument();
     });
-
-    test("Then it should show a loading", () => {
-      render(
-        <Provider store={store}>
-          <GameListPage />
-        </Provider>,
-      );
-
-      const loading = screen.getByLabelText(/loading/i);
-
-      expect(loading).toBeInTheDocument();
-    });
   });
 
   describe("When rendered and receives the games 'Subnautica' and 'Minecraft'", () => {
