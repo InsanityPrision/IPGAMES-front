@@ -9,10 +9,13 @@ interface GamesCardsListProps {
 const GamesCardsList: React.FC<GamesCardsListProps> = ({ games }) => {
   return (
     <ul className="games-list">
-      {games.map((game) => {
+      {games.map((game, gamePosition) => {
         return (
           <li key={game._id}>
-            <GameCard game={game} />
+            <GameCard
+              game={game}
+              loading={gamePosition <= 3 ? "eager" : "lazy"}
+            />
           </li>
         );
       })}
