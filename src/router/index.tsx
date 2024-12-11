@@ -1,7 +1,9 @@
 import { Navigate, Route, Routes } from "react-router";
-import App from "../components/App/App";
+import { lazy } from "react";
 import GameListPage from "../game/pages/GamesListPage/GamesListPage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import App from "../components/App/App";
+
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 
 const AppRouter: React.FC = () => {
   return (
