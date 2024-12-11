@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
 import { Game } from "../game/types";
 
-const apiUrl = import.meta.env.VITE_API_REST_URL;
+export const apiUrl = import.meta.env.VITE_API_REST_URL;
 
 if (!apiUrl) {
   throw new Error("Missing env variable VITE_API_REST_URL");
