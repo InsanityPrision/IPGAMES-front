@@ -21,7 +21,11 @@ const GameListPage: React.FC = () => {
         },
         error: {
           render() {
-            return "Failed loading games";
+            return (
+              <span aria-label="Failed loading games">
+                Failed loading games
+              </span>
+            );
           },
           icon: <img src="/error.svg" alt="" />,
         },
