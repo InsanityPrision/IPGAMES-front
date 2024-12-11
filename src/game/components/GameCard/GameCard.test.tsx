@@ -21,7 +21,7 @@ describe("Given the GameCard component", () => {
     };
 
     test("Then it should show 'Counter Strike' inside a heading", () => {
-      render(<GameCard game={counterStrike} />);
+      render(<GameCard game={counterStrike} loading="eager" />);
 
       const gameName = screen.getByRole("heading", {
         name: /counter strike/i,
@@ -31,7 +31,7 @@ describe("Given the GameCard component", () => {
     });
 
     test("Then it should show a image with the alternative text 'Counter cover'", () => {
-      render(<GameCard game={counterStrike} />);
+      render(<GameCard game={counterStrike} loading="eager" />);
 
       const gameImage = screen.getByAltText(/counter cover/i);
 

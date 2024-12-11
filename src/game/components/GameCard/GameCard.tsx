@@ -3,9 +3,10 @@ import "./GameCard.css";
 
 interface GameCardProps {
   game: Game;
+  loading: "lazy" | "eager";
 }
 
-const GameCard: React.FC<GameCardProps> = ({ game }) => {
+const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
   const starsNumbers: number[] = Array(game.rate).fill(0);
 
   const renderPrice = () => {
@@ -26,6 +27,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
         alt={game.imageAlt}
         width={380}
         height={192}
+        loading={loading}
       />
       <div>
         <div className="game-card__header">
