@@ -19,16 +19,6 @@ const GameListPage: React.FC = () => {
           },
           icon: <span aria-label="Loading" className="loader"></span>,
         },
-        error: {
-          render() {
-            return (
-              <span aria-label="Failed loading games">
-                Failed loading games
-              </span>
-            );
-          },
-          icon: <img src="/error.svg" alt="" />,
-        },
       },
       {
         closeButton: false,
