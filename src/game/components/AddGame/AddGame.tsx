@@ -22,7 +22,7 @@ const AddGame: React.FC = () => {
         />
       </div>
       <div className="add-game-form__group--checkboxes">
-        <span className="add-game-form__label">Genders (max:2)</span>
+        <span className="add-game-form__label">Genders (max: 2)</span>
         <div className="add-game-form__group--checkbox">
           <label className="add-game-form__label--checkbox" htmlFor="Action">
             Action
