@@ -7,7 +7,12 @@ const AddGame: React.FC = () => {
         <label className="add-game-form__label" htmlFor="name">
           Name
         </label>
-        <input className="add-game-form__input" type="text" id="name" />
+        <input
+          className="add-game-form__input"
+          type="text"
+          id="name"
+          required
+        />
       </div>
       <div className="add-game-form__group">
         <label className="add-game-form__label" htmlFor="price">
@@ -19,6 +24,7 @@ const AddGame: React.FC = () => {
           min={0}
           max={150}
           id="price"
+          required
         />
       </div>
       <div className="add-game-form__group--checkboxes">
@@ -117,6 +123,7 @@ const AddGame: React.FC = () => {
           min={0}
           max={5}
           id="rate"
+          required
         />
       </div>
       <div className="add-game-form__group">
@@ -126,31 +133,54 @@ const AddGame: React.FC = () => {
         <textarea
           className="add-game-form__input add-game-form__input--text-area"
           id="description"
+          required
         />
       </div>
       <div className="add-game-form__group">
         <label className="add-game-form__label" htmlFor="developer">
           Developer
         </label>
-        <input className="add-game-form__input" type="text" id="developer" />
+        <input
+          className="add-game-form__input"
+          type="text"
+          id="developer"
+          required
+        />
       </div>
       <div className="add-game-form__group">
         <label className="add-game-form__label" htmlFor="date">
           Date
         </label>
-        <input className="add-game-form__input" type="date" id="date" />
+        <input
+          className="add-game-form__input"
+          type="date"
+          min="1952-01-01"
+          max="2040-01-01"
+          id="date"
+          required
+        />
       </div>
       <div className="add-game-form__group">
         <label className="add-game-form__label" htmlFor="imageUrl">
           Image URL
         </label>
-        <input className="add-game-form__input" type="url" id="imageUrl" />
+        <input
+          className="add-game-form__input"
+          type="url"
+          id="imageUrl"
+          required
+        />
       </div>
       <div className="add-game-form__group">
         <label className="add-game-form__label" htmlFor="imageAlt">
           Alternative text
         </label>
-        <input className="add-game-form__input" type="text" id="imageAlt" />
+        <input
+          className="add-game-form__input"
+          type="text"
+          id="imageAlt"
+          required
+        />
       </div>
     </form>
   );
