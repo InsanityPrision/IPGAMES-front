@@ -3,8 +3,10 @@ import "./Button.css";
 
 const Button: React.FC<
   PropsWithChildren & ButtonHTMLAttributes<HTMLButtonElement>
-> = ({ className, children }) => {
-  return <button className={className} children={children} />;
+> = ({ className, children, disabled }) => {
+  return (
+    <button className={className} children={children} disabled={disabled} />
+  );
 };
 
 export default Button;
