@@ -8,8 +8,6 @@ const GameListPage: React.FC = () => {
   const { games, loadGames } = useGames();
 
   useEffect(() => {
-    loadGames();
-
     toast.promise(
       loadGames,
       {
