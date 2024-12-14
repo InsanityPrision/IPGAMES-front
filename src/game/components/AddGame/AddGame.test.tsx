@@ -25,6 +25,16 @@ describe("Given the AddGame component", () => {
       expect(descriptionField).toBeInTheDocument();
       expect(dateField).toBeInTheDocument();
     });
+
+    test("Then it should show disabled 'Create game' button", () => {
+      render(<AddGame />);
+
+      const createGameButton = screen.getByRole("button", {
+        name: /create game/i,
+      });
+
+      expect(createGameButton).toBeDisabled();
+    });
   });
 
   describe("When the user fills the name field with 'Counter Strike'", () => {
