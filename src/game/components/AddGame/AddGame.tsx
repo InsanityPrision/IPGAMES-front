@@ -1,3 +1,4 @@
+import Button from "../../../components/Button/Button";
 import "./AddGame.css";
 
 const AddGame: React.FC = () => {
@@ -182,6 +183,11 @@ const AddGame: React.FC = () => {
           required
         />
       </div>
+      <Button
+        className="button button--form"
+        children="Create game"
+        disabled={true}
+      />
     </form>
   );
 };
