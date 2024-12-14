@@ -7,7 +7,6 @@ import loadErrorAlert from "../../toast/toastError/loadErrorAlert";
 const useGames = () => {
   const games = useAppSelector((state) => state.games.games);
   const dispatch = useAppDispatch();
-
   const loadGames = useCallback(async () => {
     try {
       const games = await gamesClient.getGames();

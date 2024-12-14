@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router";
 import { http, HttpResponse } from "msw";
 import { Provider } from "react-redux";
@@ -133,6 +134,32 @@ describe("Given the AppRouter component", () => {
       const errorImage = await screen.findByAltText(/error 404 not found/i);
 
       expect(errorImage).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user navigates to Add game", () => {
+    test("Then it should show 'Add game' inside a heading", async () => {
+      const user = userEvent.setup();
+
+      render(
+        <MemoryRouter>
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const addGameLink = screen.getByRole("link", {
+        name: /add game/i,
+      });
+
+      await user.click(addGameLink);
+
+      const pageTitle = screen.getByRole("heading", {
+        name: /add game/i,
+      });
+
+      expect(pageTitle).toBeInTheDocument();
     });
   });
 });
