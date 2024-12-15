@@ -13,7 +13,7 @@ describe("Given the GameCard component", () => {
       description:
         "Counter-Strike: Global Offensive (CS:GO) is a team-based first-person shooter developed by Valve and Hidden Path Entertainment. Released in 2012, it features competitive gameplay where teams of Terrorists and Counter-Terrorists complete objectives, such as planting/defusing bombs or rescuing hostages. Known for its tactical depth, skill-based mechanics, and esports scene, CS:GO remains one of the most popular multiplayer games worldwide.",
       developer: "Valve",
-      date: new Date(),
+      date: "",
       genders: ["RPG", "Shooter"],
       imageUrl:
         "https://cdn.akamai.steamstatic.com/apps/csgo/images/csgo_react/social/cs2.jpg",
