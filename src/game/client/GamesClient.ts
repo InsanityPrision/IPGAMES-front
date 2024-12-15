@@ -19,6 +19,20 @@ export class GamesClient implements GameClientStructure {
 
     return games;
   }
+
+  async createGame(gameData: Omit<Game, "_id">): Promise<Game> {
+    const response = await fetch(`${this.apiRestUrl}/games`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(gameData),
+    });
+
+    const newGame = (await response.json()) as Game;
+
+    return newGame;
+  }
 }
 
 export const gamesClient = new GamesClient();
