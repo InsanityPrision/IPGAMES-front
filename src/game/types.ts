@@ -18,7 +18,7 @@ export interface Game {
   rate: rateGrade;
   description: string;
   developer: string;
-  date: Date;
+  date: string;
   genders: GenderType[];
   imageUrl: string;
   imageAlt: string;
