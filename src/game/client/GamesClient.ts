@@ -29,9 +29,9 @@ export class GamesClient implements GameClientStructure {
       body: JSON.stringify(gameData),
     });
 
-    const newGame = (await response.json()) as Game;
+    const { game } = (await response.json()) as { game: Game };
 
-    return newGame;
+    return game;
   }
 }
 
