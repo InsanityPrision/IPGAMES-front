@@ -4,10 +4,11 @@ import AddGame from "./AddGame";
 
 describe("Given the AddGame component", () => {
   const user = userEvent.setup();
+  const mockSendData = vi.fn();
 
   describe("When rendered", () => {
     test("Then it should show 'Name', 'Price', 'Genders (max:2)', 'Action', 'Shooter' , 'Description' and 'Date'", () => {
-      render(<AddGame />);
+      render(<AddGame sendData={mockSendData} />);
 
       const nameField = screen.getByLabelText(/name/i);
       const priceField = screen.getByLabelText(/price/i);
@@ -27,7 +28,7 @@ describe("Given the AddGame component", () => {
     });
 
     test("Then it should show disabled 'Create game' button", () => {
-      render(<AddGame />);
+      render(<AddGame sendData={mockSendData} />);
 
       const createGameButton = screen.getByRole("button", {
         name: /create game/i,
@@ -41,7 +42,7 @@ describe("Given the AddGame component", () => {
     test("Then it should show 'Counter Strike' inside the field", async () => {
       const typedNameByUser = "Counter Strike";
 
-      render(<AddGame />);
+      render(<AddGame sendData={mockSendData} />);
 
       const nameField = screen.getByLabelText(/name/i);
 
@@ -53,7 +54,7 @@ describe("Given the AddGame component", () => {
 
   describe("When the user checks the action checkbox", () => {
     test("Then it should show", async () => {
-      render(<AddGame />);
+      render(<AddGame sendData={mockSendData} />);
 
       const actionCheckbox = screen.getByLabelText(/action/i);
 
@@ -65,7 +66,7 @@ describe("Given the AddGame component", () => {
 
   describe("When the user fills all required fields", () => {
     test("Then it should show an enabled 'Create game' button", async () => {
-      render(<AddGame />);
+      render(<AddGame sendData={mockSendData} />);
 
       const nameField = screen.getByLabelText(/name/i);
       const priceField = screen.getByLabelText(/price/i);

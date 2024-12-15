@@ -3,11 +3,16 @@ import Button from "../../../components/Button/Button";
 import "./AddGame.css";
 import { Game, GenderType } from "../../types";
 
-const AddGame: React.FC = () => {
+interface AddGameProps {
+  sendData: (gameData: Omit<Game, "_id">) => void;
+}
+
+const AddGame: React.FC<AddGameProps> = ({ sendData }) => {
   const [
     {
       name,
       price,
+      isFree,
       rate,
       description,
       developer,
@@ -77,8 +82,27 @@ const AddGame: React.FC = () => {
     date.length,
   ]);
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newGameData: Omit<Game, "_id"> = {
+      name,
+      price,
+      isFree,
+      rate,
+      description,
+      developer,
+      date,
+      genders,
+      imageUrl,
+      imageAlt,
+    };
+
+    sendData(newGameData);
+  };
+
   return (
-    <form className="add-game-form">
+    <form className="add-game-form" onSubmit={handleSubmit}>
       <div className="add-game-form__group">
         <label className="add-game-form__label" htmlFor="name">
           Name
