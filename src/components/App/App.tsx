@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <ToastContainer
         position="top-center"
         hideProgressBar={true}
-        autoClose={false}
+        autoClose={2000}
         icon={false}
         limit={2}
       />
