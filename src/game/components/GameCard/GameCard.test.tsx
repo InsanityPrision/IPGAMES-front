@@ -47,5 +47,19 @@ describe("Given the GameCard component", () => {
 
       expect(gameImage).toBeInTheDocument();
     });
+
+    test("Then it should show a 'Delete game' button", () => {
+      render(
+        <Provider store={store}>
+          <GameCard game={counterStrike} loading="eager" />
+        </Provider>,
+      );
+
+      const deleteGameButton = screen.getByRole("button", {
+        name: /delete game/i,
+      });
+
+      expect(deleteGameButton).toBeInTheDocument();
+    });
   });
 });

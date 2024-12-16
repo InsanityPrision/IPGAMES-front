@@ -53,5 +53,21 @@ describe("Given the GameListPage component", () => {
       expect(subnauticaImage).toBeInTheDocument();
       expect(minecraftImage).toBeInTheDocument();
     });
+
+    test("Then it should show 'Delete game' button in each game", () => {
+      render(
+        <Provider store={store}>
+          <GameListPage />
+        </Provider>,
+      );
+
+      const deleteGameButtons = screen.getAllByRole("button", {
+        name: /delete game/i,
+      });
+
+      deleteGameButtons.forEach((deleteGameButton) => {
+        expect(deleteGameButton).toBeInTheDocument();
+      });
+    });
   });
 });
