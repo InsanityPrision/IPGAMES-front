@@ -17,7 +17,7 @@ const App: React.FC = () => {
         hideProgressBar={true}
         autoClose={2000}
         icon={false}
-        limit={2}
+        limit={3}
       />
       <NavMenu />
     </>

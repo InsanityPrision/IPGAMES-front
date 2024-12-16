@@ -9,6 +9,37 @@ import { store } from "../store";
 import AppRouter from ".";
 
 describe("Given the AppRouter component", () => {
+  const submitAddGame = async () => {
+    const user = userEvent.setup();
+
+    const nameField = screen.getByLabelText(/name/i);
+    const priceField = screen.getByLabelText(/price/i);
+    const rateField = screen.getByLabelText(/rate/i);
+    const descriptionField = screen.getByLabelText(/description/i);
+    const develeportField = screen.getByLabelText(/developer/i);
+    const dateField = screen.getByLabelText(/date/i);
+    const imageUrlField = screen.getByLabelText(/image url/i);
+    const imageAltField = screen.getByLabelText(/alternative text/i);
+
+    await user.type(nameField, "Counter Strike");
+    await user.type(priceField, "3");
+    await user.type(rateField, "2");
+    await user.type(
+      descriptionField,
+      "Un juego en equipo 5 contra 5 de tipo shooter",
+    );
+    await user.type(develeportField, "Valve");
+    await user.type(dateField, "2024-12-29");
+    await user.type(imageUrlField, "http://localhost:5173/add-game");
+    await user.type(imageAltField, "counter strike cover");
+
+    const createGameButton = screen.getByRole("button", {
+      name: /create game/i,
+    });
+
+    await user.click(createGameButton);
+  };
+
   describe("When rendered at /games", () => {
     const gamesRoute = "/games";
 
@@ -134,6 +165,55 @@ describe("Given the AppRouter component", () => {
       const errorImage = await screen.findByAltText(/error 404 not found/i);
 
       expect(errorImage).toBeInTheDocument();
+    });
+  });
+
+  describe("When rendered at /add-game", () => {
+    test("Then it should show 'Add game' inside a heading", () => {
+      render(
+        <MemoryRouter initialEntries={["/add-game"]}>
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const pageTitle = screen.getByRole("heading", {
+        name: /add game/i,
+      });
+
+      expect(pageTitle).toBeInTheDocument();
+    });
+  });
+
+  describe("And the user submits the form with the game 'Counter Strike' and already exists in data base", () => {
+    test("Then it should show a message 'Failed creating game'", async () => {
+      server.use(
+        http.post(`${apiUrl}/games`, () => {
+          return HttpResponse.json(
+            {
+              message: "Failed creating game",
+            },
+            {
+              status: 409,
+            },
+          );
+        }),
+      );
+
+      render(
+        <MemoryRouter initialEntries={["/add-game"]}>
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      await submitAddGame();
+
+      const errorAlert = await screen.findByText(/failed creating game/i);
+
+      expect(errorAlert).toBeInTheDocument();
     });
   });
 
