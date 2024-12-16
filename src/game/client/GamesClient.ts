@@ -33,6 +33,20 @@ export class GamesClient implements GameClientStructure {
 
     return game;
   }
+
+  async deleteGame(id: string): Promise<Game> {
+    const response = await fetch(`${this.apiRestUrl}/games/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed deleting game");
+    }
+
+    const { game } = (await response.json()) as { game: Game };
+
+    return game;
+  }
 }
 
 export const gamesClient = new GamesClient();
