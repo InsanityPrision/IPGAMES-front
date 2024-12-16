@@ -184,36 +184,81 @@ describe("Given the AppRouter component", () => {
 
       expect(pageTitle).toBeInTheDocument();
     });
-  });
 
-  describe("And the user submits the form with the game 'Counter Strike' and already exists in data base", () => {
-    test("Then it should show a message 'Failed creating game'", async () => {
-      server.use(
-        http.post(`${apiUrl}/games`, () => {
-          return HttpResponse.json(
-            {
-              message: "Failed creating game",
-            },
-            {
-              status: 409,
-            },
-          );
-        }),
-      );
+    describe("And the user submits the form with the game 'Counter Strike' and already exists in data base", () => {
+      test("Then it should show a message 'Failed creating game'", async () => {
+        server.use(
+          http.post(`${apiUrl}/games`, () => {
+            return HttpResponse.json(
+              {
+                message: "Failed creating game",
+              },
+              {
+                status: 409,
+              },
+            );
+          }),
+        );
 
-      render(
-        <MemoryRouter initialEntries={["/add-game"]}>
-          <Provider store={store}>
-            <AppRouter />
-          </Provider>
-        </MemoryRouter>,
-      );
+        render(
+          <MemoryRouter initialEntries={["/add-game"]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
 
-      await submitAddGame();
+        await submitAddGame();
 
-      const errorAlert = await screen.findByText(/failed creating game/i);
+        const errorAlert = await screen.findByText(/failed creating game/i);
 
-      expect(errorAlert).toBeInTheDocument();
+        expect(errorAlert).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user submits the form with the game 'Outer Wilds'", () => {
+      test("Then it should show a message 'Game created'", async () => {
+        server.use(
+          http.post(`${apiUrl}/games`, () => {
+            return HttpResponse.json(
+              {
+                game: {
+                  name: "Outer Wilds",
+                  price: 22.99,
+                  isFree: false,
+                  rate: 5,
+                  description:
+                    "Outer Wilds is an open-world mystery game where players explore a solar system trapped in a 22-minute time loop. As a Hearthian astronaut, you uncover the secrets of the Nomai civilization and the Eye of the Universe. The dynamic planets evolve in real time, creating a unique puzzle-solving experience. Praised for its storytelling and innovative design, it’s a standout in exploration games​",
+                  developer: "Mobius Digital",
+                  date: "2020-05-17T22:00:00.000Z",
+                  genders: ["Horror", "Adventure"],
+                  imageUrl: "/outerwilds.webp",
+                  imageAlt: "Outer Wilds cover",
+                  _id: "675ff5d4951e3eec8fe8239f",
+                  __v: 0,
+                },
+              },
+              {
+                status: 201,
+              },
+            );
+          }),
+        );
+
+        render(
+          <MemoryRouter initialEntries={["/add-game"]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        await submitAddGame();
+
+        const succesAlert = await screen.findByText(/game created/i);
+
+        expect(succesAlert).toBeInTheDocument();
+      });
     });
   });
 
