@@ -1,9 +1,10 @@
 import Button from "../../../components/Button/Button";
 import { gamesClient } from "../../client/GamesClient";
 import { Game } from "../../types";
-import "./GameCard.css";
 import loadErrorAlert from "../../../toast/toastError/loadErrorAlert";
 import useGames from "../../hooks/useGames";
+import "./GameCard.css";
+import { toast } from "react-toastify";
 
 interface GameCardProps {
   game: Game;
@@ -39,7 +40,26 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
   };
 
   const deleteGameOnClick = async () => {
-    await deleteGame();
+    toast.promise(
+      deleteGame,
+      {
+        pending: {
+          render() {
+            return "Deleting game";
+          },
+          icon: <span aria-label="Loading" className="loader"></span>,
+        },
+        success: {
+          render() {
+            return "Game created";
+          },
+          icon: <img src="/trash.svg" alt="" />,
+        },
+      },
+      {
+        closeButton: false,
+      },
+    );
   };
 
   return (
