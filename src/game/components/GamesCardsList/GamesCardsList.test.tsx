@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import GamesCardsList from "./GamesCardsList";
 import { Game } from "../../types";
-import { Provider } from "react-redux";
 import { store } from "../../../store";
 
 describe("Given the GamesCardsList component", () => {
