@@ -57,6 +57,10 @@
   background-color: #e6d3d3;
 }
 
+.Toastify__toast--success {
+  background-color: #d7e6d5;
+}
+
 .loader {
   width: 120px;
   height: 120px;

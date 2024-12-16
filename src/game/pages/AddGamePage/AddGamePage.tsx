@@ -30,6 +30,12 @@ const AddGamePage: React.FC = () => {
           },
           icon: <span aria-label="Loading" className="loader"></span>,
         },
+        success: {
+          render() {
+            return "Game created";
+          },
+          icon: <img src="/ok.svg" alt="" />,
+        },
       },
       {
         closeButton: false,
