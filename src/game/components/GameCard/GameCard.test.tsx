@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import GameCard from "./GameCard";
 import { Game } from "../../types";
+import { Provider } from "react-redux";
+import { store } from "../../../store";
 
 describe("Given the GameCard component", () => {
   describe("When renderd and receives the game 'Counter Strike'", () => {
@@ -21,7 +23,11 @@ describe("Given the GameCard component", () => {
     };
 
     test("Then it should show 'Counter Strike' inside a heading", () => {
-      render(<GameCard game={counterStrike} loading="eager" />);
+      render(
+        <Provider store={store}>
+          <GameCard game={counterStrike} loading="eager" />
+        </Provider>,
+      );
 
       const gameName = screen.getByRole("heading", {
         name: /counter strike/i,
@@ -31,7 +37,11 @@ describe("Given the GameCard component", () => {
     });
 
     test("Then it should show a image with the alternative text 'Counter cover'", () => {
-      render(<GameCard game={counterStrike} loading="eager" />);
+      render(
+        <Provider store={store}>
+          <GameCard game={counterStrike} loading="eager" />
+        </Provider>,
+      );
 
       const gameImage = screen.getByAltText(/counter cover/i);
 

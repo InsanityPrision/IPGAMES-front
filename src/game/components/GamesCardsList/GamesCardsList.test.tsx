@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import GamesCardsList from "./GamesCardsList";
 import { Game } from "../../types";
+import { Provider } from "react-redux";
+import { store } from "../../../store";
 
 describe("Given the GamesCardsList component", () => {
   describe("When rendered and receives a list of games with titles 'Counter Strike' and 'Outer Wilds'", () => {
@@ -36,7 +38,11 @@ describe("Given the GamesCardsList component", () => {
     ];
 
     test("Then it should show the titles: 'Counter Strike' and 'Outer Wilds'", () => {
-      render(<GamesCardsList games={games} />);
+      render(
+        <Provider store={store}>
+          <GamesCardsList games={games} />
+        </Provider>,
+      );
 
       const counterStrikeName = screen.getByRole("heading", {
         name: /counter strike/i,
@@ -51,7 +57,11 @@ describe("Given the GamesCardsList component", () => {
     });
 
     test("Then it should show images with alternatives text: 'Counter Strike cover' and 'Outer Wilds cover'", () => {
-      render(<GamesCardsList games={games} />);
+      render(
+        <Provider store={store}>
+          <GamesCardsList games={games} />
+        </Provider>,
+      );
 
       const counterStrikeImage = screen.getByAltText(/counter strike cover/i);
 
