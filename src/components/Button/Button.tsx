@@ -3,9 +3,14 @@ import "./Button.css";
 
 const Button: React.FC<
   PropsWithChildren & ButtonHTMLAttributes<HTMLButtonElement>
-> = ({ className, children, disabled }) => {
+> = ({ className, children, disabled, onClick }) => {
   return (
-    <button className={className} children={children} disabled={disabled} />
+    <button
+      className={className}
+      children={children}
+      disabled={disabled}
+      onClick={onClick}
+    />
   );
 };
 

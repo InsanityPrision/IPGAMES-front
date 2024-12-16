@@ -42,3 +42,8 @@
   color: #217d1e;
   font-weight: bold;
 }
+
+.button--delete {
+  margin-top: 26px;
+  background-color: #ff0000;
+}

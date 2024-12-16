@@ -1,5 +1,9 @@
+import Button from "../../../components/Button/Button";
+import { gamesClient } from "../../client/GamesClient";
 import { Game } from "../../types";
 import "./GameCard.css";
+import loadErrorAlert from "../../../toast/toastError/loadErrorAlert";
+import useGames from "../../hooks/useGames";
 
 interface GameCardProps {
   game: Game;
@@ -8,6 +12,7 @@ interface GameCardProps {
 
 const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
   const starsNumbers: number[] = Array(game.rate).fill(0);
+  const { loadGames } = useGames();
 
   const renderPrice = () => {
     return (
@@ -17,6 +22,24 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
         {game.isFree ? "FREE" : `${game.price}$`}
       </span>
     );
+  };
+
+  const deleteGame = async () => {
+    try {
+      const deletedGame = await gamesClient.deleteGame(game._id);
+
+      if (!deletedGame) {
+        throw new Error("Failed deleting game");
+      }
+
+      loadGames();
+    } catch {
+      loadErrorAlert("Failed deleting game");
+    }
+  };
+
+  const deleteGameOnClick = async () => {
+    await deleteGame();
   };
 
   return (
@@ -51,6 +74,9 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
           <span className="game-card__price-title">Price:</span>
           {renderPrice()}
         </div>
+        <Button className="button button--delete" onClick={deleteGameOnClick}>
+          Delete game
+        </Button>
       </div>
     </article>
   );
