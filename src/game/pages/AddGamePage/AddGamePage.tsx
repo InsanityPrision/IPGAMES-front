@@ -43,10 +43,10 @@ const AddGamePage: React.FC = () => {
   };
 
   return (
-    <>
+    <main className="main-container">
       <h1 className="form-title">Add Game</h1>
       <AddGame sendData={sendNewGameData} />
-    </>
+    </main>
   );
 };
 

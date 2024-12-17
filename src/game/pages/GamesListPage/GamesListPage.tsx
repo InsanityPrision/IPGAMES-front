@@ -25,10 +25,10 @@ const GameListPage: React.FC = () => {
   }, [loadGames]);
 
   return (
-    <>
+    <main className="main-container">
       <h1 className="page-title">Games</h1>
       <GamesCardsList games={games} />
-    </>
+    </main>
   );
 };
 
