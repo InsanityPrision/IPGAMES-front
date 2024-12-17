@@ -13,8 +13,7 @@ interface GameCardProps {
 }
 
 const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
-  const starsNumbers: number[] = Array(game.rate).fill(0);
-  const { loadGames } = useGames();
+  const { loadGames, renderStars } = useGames();
 
   const renderPrice = () => {
     return (
@@ -71,20 +70,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
       <div>
         <div className="game-card__header">
           <h2 className="game-card__name">{game.name}</h2>
-          <ol className="game-card__raiting">
-            {starsNumbers.map((_starsNumber, index) => {
-              return (
-                <li key={starsNumbers.length - index}>
-                  <img
-                    src="/star.svg"
-                    alt={`Rated level ${index + 1}`}
-                    width={11}
-                    height={10}
-                  />
-                </li>
-              );
-            })}
-          </ol>
+          <ol className="game-card__raiting">{renderStars(game)}</ol>
         </div>
         <div className="game-card__price">
           <span className="game-card__price-title">Price:</span>
