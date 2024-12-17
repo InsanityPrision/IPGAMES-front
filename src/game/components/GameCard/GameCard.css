@@ -9,7 +9,7 @@
   border-radius: 15px;
   border-bottom-left-radius: 0;
   object-fit: cover;
-  box-shadow: 0px 5px 5px #0000005e;
+  box-shadow: var(--shadow);
   width: 100%;
   height: auto;
 }

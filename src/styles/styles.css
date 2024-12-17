@@ -1,6 +1,7 @@
 :root {
   --main-color: #dce5e5;
   --free-color: #217d1e;
+  --shadow: 0px 5px 5px #0000005e;
 }
 
 *,
