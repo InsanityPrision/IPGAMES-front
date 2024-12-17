@@ -3,6 +3,7 @@ import Button from "../../../components/Button/Button";
 import { gamesClient } from "../../client/GamesClient";
 import { Game } from "../../types";
 import loadErrorAlert from "../../../toast/toastError/loadErrorAlert";
+import loadSuccesAlert from "../../../toast/toastSucces/loadSuccesAlert";
 import useGames from "../../hooks/useGames";
 import "./GameCard.css";
 
@@ -33,6 +34,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
         throw new Error("Failed deleting game");
       }
 
+      loadSuccesAlert("Game deleted", "trash");
       loadGames();
     } catch {
       loadErrorAlert("Failed deleting game");
@@ -48,12 +50,6 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
             return "Deleting game";
           },
           icon: <span aria-label="Loading" className="loader"></span>,
-        },
-        success: {
-          render() {
-            return "Game deleted";
-          },
-          icon: <img src="/trash.svg" alt="" />,
         },
       },
       {

@@ -1,10 +1,10 @@
-import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
+import { Outlet } from "react-router";
+import { Suspense } from "react";
 import Header from "../Header/Header";
 import NavMenu from "../NavMenu/NavMenu";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import { Suspense } from "react";
 
 const App: React.FC = () => {
   return (
