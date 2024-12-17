@@ -11,9 +11,7 @@ const App: React.FC = () => {
     <>
       <Header />
       <Suspense>
-        <main className="main-container">
-          <Outlet />
-        </main>
+        <Outlet />
       </Suspense>
       <ToastContainer
         position="top-center"

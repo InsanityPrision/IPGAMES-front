@@ -1,5 +1,6 @@
 :root {
   --main-color: #dce5e5;
+  --free-color: #217d1e;
 }
 
 *,
@@ -21,6 +22,12 @@ h1 {
 h2 {
   margin: 0;
   font-size: 1.25rem;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 a {

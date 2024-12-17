@@ -39,7 +39,7 @@
 }
 
 .game-card__price-number--free {
-  color: #217d1e;
+  color: var(--free-color);
   font-weight: bold;
 }
 
