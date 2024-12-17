@@ -1,10 +1,10 @@
+import { toast } from "react-toastify";
 import Button from "../../../components/Button/Button";
 import { gamesClient } from "../../client/GamesClient";
 import { Game } from "../../types";
 import loadErrorAlert from "../../../toast/toastError/loadErrorAlert";
 import useGames from "../../hooks/useGames";
 import "./GameCard.css";
-import { toast } from "react-toastify";
 
 interface GameCardProps {
   game: Game;
@@ -51,7 +51,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
         },
         success: {
           render() {
-            return "Game created";
+            return "Game deleted";
           },
           icon: <img src="/trash.svg" alt="" />,
         },
