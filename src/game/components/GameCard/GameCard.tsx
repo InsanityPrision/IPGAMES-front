@@ -1,9 +1,11 @@
+import { toast } from "react-toastify";
 import Button from "../../../components/Button/Button";
 import { gamesClient } from "../../client/GamesClient";
 import { Game } from "../../types";
-import "./GameCard.css";
 import loadErrorAlert from "../../../toast/toastError/loadErrorAlert";
+import loadSuccesAlert from "../../../toast/toastSucces/loadSuccesAlert";
 import useGames from "../../hooks/useGames";
+import "./GameCard.css";
 
 interface GameCardProps {
   game: Game;
@@ -32,6 +34,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
         throw new Error("Failed deleting game");
       }
 
+      loadSuccesAlert("Game deleted", "trash");
       loadGames();
     } catch {
       loadErrorAlert("Failed deleting game");
@@ -39,7 +42,20 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
   };
 
   const deleteGameOnClick = async () => {
-    await deleteGame();
+    toast.promise(
+      deleteGame,
+      {
+        pending: {
+          render() {
+            return "Deleting game";
+          },
+          icon: <span aria-label="Loading" className="loader"></span>,
+        },
+      },
+      {
+        closeButton: false,
+      },
+    );
   };
 
   return (

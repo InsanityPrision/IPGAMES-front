@@ -1,10 +1,11 @@
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 import { gamesClient } from "../../client/GamesClient";
 import AddGame from "../../components/AddGame/AddGame";
 import { Game } from "../../types";
-import "./AddGamePage.css";
 import loadErrorAlert from "../../../toast/toastError/loadErrorAlert";
-import { useNavigate } from "react-router";
+import loadSuccesAlert from "../../../toast/toastSucces/loadSuccesAlert";
+import "./AddGamePage.css";
 
 const AddGamePage: React.FC = () => {
   const navigate = useNavigate();
@@ -15,13 +16,15 @@ const AddGamePage: React.FC = () => {
       if (!newGame) {
         throw new Error("Failed creating game");
       }
+
+      loadSuccesAlert("Game created", "ok");
     } catch {
       loadErrorAlert("Failed creating game");
     }
   };
 
   const sendNewGameData = async (gamesData: Omit<Game, "_id">) => {
-    toast.promise(
+    await toast.promise(
       createNewGame(gamesData),
       {
         pending: {
@@ -29,12 +32,6 @@ const AddGamePage: React.FC = () => {
             return "Creating game";
           },
           icon: <span aria-label="Loading" className="loader"></span>,
-        },
-        success: {
-          render() {
-            return "Game created";
-          },
-          icon: <img src="/ok.svg" alt="" />,
         },
       },
       {

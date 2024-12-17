@@ -10,6 +10,8 @@ import AppRouter from ".";
 import { submitAddGame } from "../game/components/AddGame/__tests__/submitAddGame";
 
 describe("Given the AppRouter component", () => {
+  const user = userEvent.setup();
+
   describe("When rendered at /games", () => {
     const gamesRoute = "/games";
 
@@ -104,6 +106,83 @@ describe("Given the AppRouter component", () => {
         const errorAlert = await screen.findByText(/failed loading games/i);
 
         expect(errorAlert).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user click on 'Delete game' button of Subnautica game", () => {
+      test("Then it should show a message 'Game deleted'", async () => {
+        server.use(
+          http.delete(`${apiUrl}/games/1rqwasd`, () => {
+            return HttpResponse.json(
+              {
+                game: {
+                  _id: "1rqwasd",
+                  name: "Subnautica",
+                  price: 25,
+                  isFree: false,
+                  rate: 3,
+                  description: "",
+                  developer: "",
+                  date: "",
+                  genders: [],
+                  imageUrl: "",
+                  imageAlt: "Subnautica cover",
+                },
+              },
+              {
+                status: 200,
+              },
+            );
+          }),
+        );
+
+        render(
+          <MemoryRouter initialEntries={[gamesRoute]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        const deleteGameButtons = screen.getAllByRole("button", {
+          name: /delete game/i,
+        });
+
+        await user.click(deleteGameButtons[0]);
+
+        const gameDeletedAlert = await screen.findByText(/game deleted/i);
+
+        expect(gameDeletedAlert).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user click on 'Delete game' button of Subnautica game and the request fails", () => {
+      test("Then it should show a alert with the message 'Failed deleting game'", async () => {
+        server.use(
+          http.delete(`${apiUrl}/games/1234`, () => {
+            return HttpResponse.json(null, {
+              status: 400,
+            });
+          }),
+        );
+        render(
+          <MemoryRouter initialEntries={[gamesRoute]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        const deleteGameButtons = screen.getAllByRole("button", {
+          name: /delete game/i,
+        });
+
+        await user.click(deleteGameButtons[0]);
+
+        const deleteGameAlert =
+          await screen.findByText(/failed deleting game/i);
+
+        expect(deleteGameAlert).toBeInTheDocument();
       });
     });
   });
@@ -234,8 +313,6 @@ describe("Given the AppRouter component", () => {
 
   describe("When the user navigates to Add game", () => {
     test("Then it should show 'Add game' inside a heading", async () => {
-      const user = userEvent.setup();
-
       render(
         <MemoryRouter>
           <Provider store={store}>
