@@ -165,6 +165,7 @@ describe("Given the AppRouter component", () => {
             });
           }),
         );
+
         render(
           <MemoryRouter initialEntries={[gamesRoute]}>
             <Provider store={store}>
@@ -173,7 +174,7 @@ describe("Given the AppRouter component", () => {
           </MemoryRouter>,
         );
 
-        const deleteGameButtons = screen.getAllByRole("button", {
+        const deleteGameButtons = await screen.findAllByRole("button", {
           name: /delete game/i,
         });
 
