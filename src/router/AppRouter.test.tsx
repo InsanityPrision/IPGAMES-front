@@ -159,7 +159,7 @@ describe("Given the AppRouter component", () => {
     describe("And the user click on 'Delete game' button of Subnautica game and the request fails", () => {
       test("Then it should show a alert with the message 'Failed deleting game'", async () => {
         server.use(
-          http.delete(`${apiUrl}/games/1234`, () => {
+          http.delete(`${apiUrl}/games/1rqwasd`, () => {
             return HttpResponse.json(null, {
               status: 400,
             });
@@ -184,6 +184,50 @@ describe("Given the AppRouter component", () => {
           await screen.findByText(/failed deleting game/i);
 
         expect(deleteGameAlert).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user click on 'More' button of Subnautica game and navigates to DetailPage of Subnautica", () => {
+      test("Then it should show 'Subnautica' inside a header", async () => {
+        server.use(
+          http.get(`${apiUrl}/games/1rqwasd`, () => {
+            return HttpResponse.json({
+              game: {
+                _id: "1rqwasd",
+                name: "Subnautica",
+                price: 25,
+                isFree: false,
+                rate: 3,
+                description: "",
+                developer: "",
+                date: "",
+                genders: [],
+                imageUrl: "",
+                imageAlt: "Subnautica cover",
+              },
+            });
+          }),
+        );
+
+        render(
+          <MemoryRouter initialEntries={[gamesRoute]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        const moreButtons = await screen.findAllByRole("link", {
+          name: /more/i,
+        });
+
+        await user.click(moreButtons[0]);
+
+        const subnauticaTitle = await screen.findByRole("heading", {
+          name: /subnautica/i,
+        });
+
+        expect(subnauticaTitle).toBeInTheDocument();
       });
     });
   });
@@ -239,14 +283,9 @@ describe("Given the AppRouter component", () => {
       test("Then it should show a message 'Failed creating game'", async () => {
         server.use(
           http.post(`${apiUrl}/games`, () => {
-            return HttpResponse.json(
-              {
-                message: "Failed creating game",
-              },
-              {
-                status: 409,
-              },
-            );
+            return HttpResponse.json(null, {
+              status: 409,
+            });
           }),
         );
 
@@ -333,6 +372,69 @@ describe("Given the AppRouter component", () => {
       });
 
       expect(pageTitle).toBeInTheDocument();
+    });
+  });
+
+  describe("When rendered at /game-detail/675f26f9a8e171c225f161d0", () => {
+    const outerwildsRoute = "/game-detail/675f26f9a8e171c225f161d0";
+
+    test("Then it should show 'Outer Wilds' inside a heading", async () => {
+      render(
+        <MemoryRouter initialEntries={[outerwildsRoute]}>
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const detailPageTitle = await screen.findByRole("heading", {
+        name: /outer wilds/i,
+      });
+
+      expect(detailPageTitle).toBeInTheDocument();
+    });
+
+    test("Then it should a iamge with alternative text 'Outer Wilds cover'", async () => {
+      render(
+        <MemoryRouter initialEntries={[outerwildsRoute]}>
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
+        </MemoryRouter>,
+      );
+
+      const detailPageImage = await screen.findByAltText(/outer wilds cover/i);
+
+      expect(detailPageImage).toBeInTheDocument();
+    });
+
+    describe("And fails de request", () => {
+      test("Then it should show a error alert with message 'Failed loading game'", async () => {
+        server.use(
+          http.get(`${apiUrl}/games/675f26f9a8e171c225f161d0`, () => {
+            return HttpResponse.json(
+              {
+                message: "Failed loading game",
+              },
+              {
+                status: 500,
+              },
+            );
+          }),
+        );
+
+        render(
+          <MemoryRouter initialEntries={[outerwildsRoute]}>
+            <Provider store={store}>
+              <AppRouter />
+            </Provider>
+          </MemoryRouter>,
+        );
+
+        const errorAlert = await screen.findByText(/failed loading game/i);
+
+        expect(errorAlert).toBeInTheDocument();
+      });
     });
   });
 });

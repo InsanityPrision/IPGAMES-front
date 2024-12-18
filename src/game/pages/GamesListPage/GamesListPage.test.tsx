@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import GameListPage from "./GamesListPage";
 import { Provider } from "react-redux";
 import { store } from "../../../store";
+import { MemoryRouter } from "react-router";
 
 describe("Given the GameListPage component", () => {
   describe("When rendered", () => {
@@ -23,9 +24,11 @@ describe("Given the GameListPage component", () => {
   describe("When rendered and receives the games 'Subnautica' and 'Minecraft'", () => {
     test("Then it should show 'Subnautica' and 'Minecraft' inside a headings", async () => {
       render(
-        <Provider store={store}>
-          <GameListPage />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <GameListPage />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const subnauticaTitle = await screen.findByRole("heading", {
@@ -42,11 +45,12 @@ describe("Given the GameListPage component", () => {
 
     test("Then it should show two images with alternative texts 'Subnautica cover' and 'Minecraft cover'", async () => {
       render(
-        <Provider store={store}>
-          <GameListPage />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <GameListPage />
+          </Provider>
+        </MemoryRouter>,
       );
-
       const subnauticaImage = await screen.findByAltText(/subnautica cover/i);
       const minecraftImage = await screen.findByAltText(/minecraft cover/i);
 
@@ -56,9 +60,11 @@ describe("Given the GameListPage component", () => {
 
     test("Then it should show 'Delete game' button in each game", () => {
       render(
-        <Provider store={store}>
-          <GameListPage />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <GameListPage />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const deleteGameButtons = screen.getAllByRole("button", {

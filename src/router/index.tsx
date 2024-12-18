@@ -14,7 +14,7 @@ const AppRouter: React.FC = () => {
         <Route index element={<Navigate to={"/games"} />} />
         <Route path="games" element={<GameListPage />} />
         <Route path="add-game" element={<AddGamePage />} />
-        <Route path="game-detail" element={<GameDetailPage />} />
+        <Route path="game-detail/:_id" element={<GameDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

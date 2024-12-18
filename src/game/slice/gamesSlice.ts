@@ -33,7 +33,6 @@ export const gamesSlice = createSlice({
         games: action.payload,
       };
     },
-
     loadGame: (state, action: PayloadAction<Game>) => {
       return {
         ...state,

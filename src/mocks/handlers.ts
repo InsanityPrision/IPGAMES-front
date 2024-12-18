@@ -78,7 +78,7 @@ export const handlers = [
       },
     });
   }),
-  http.get(`${apiUrl}/games/675f26f9a8e171c225f161d0`, () => {
+  http.get(`${apiUrl}/games/:_id`, () => {
     return HttpResponse.json({
       game: {
         name: "Outer Wilds",

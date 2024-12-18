@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import GamesCardsList from "./GamesCardsList";
 import { Game } from "../../types";
 import { store } from "../../../store";
+import { MemoryRouter } from "react-router";
 
 describe("Given the GamesCardsList component", () => {
   describe("When rendered and receives a list of games with titles 'Counter Strike' and 'Outer Wilds'", () => {
@@ -39,9 +40,11 @@ describe("Given the GamesCardsList component", () => {
 
     test("Then it should show the titles: 'Counter Strike' and 'Outer Wilds'", () => {
       render(
-        <Provider store={store}>
-          <GamesCardsList games={games} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <GamesCardsList games={games} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const counterStrikeName = screen.getByRole("heading", {
@@ -58,9 +61,11 @@ describe("Given the GamesCardsList component", () => {
 
     test("Then it should show images with alternatives text: 'Counter Strike cover' and 'Outer Wilds cover'", () => {
       render(
-        <Provider store={store}>
-          <GamesCardsList games={games} />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <GamesCardsList games={games} />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const counterStrikeImage = screen.getByAltText(/counter strike cover/i);

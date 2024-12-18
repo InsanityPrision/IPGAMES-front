@@ -12,10 +12,7 @@ const AddGamePage: React.FC = () => {
 
   const createNewGame = async (gamesData: Omit<Game, "_id">) => {
     try {
-      const newGame = await gamesClient.createGame(gamesData);
-      if (!newGame) {
-        throw new Error("Failed creating game");
-      }
+      await gamesClient.createGame(gamesData);
 
       loadSuccesAlert("Game created", "ok");
     } catch {

@@ -27,11 +27,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
 
   const deleteGame = async () => {
     try {
-      const deletedGame = await gamesClient.deleteGame(game._id);
-
-      if (!deletedGame) {
-        throw new Error("Failed deleting game");
-      }
+      await gamesClient.deleteGame(game._id);
 
       loadSuccesAlert("Game deleted", "trash");
       loadGames();
@@ -76,9 +72,17 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
           <span className="game-card__price-title">Price:</span>
           {renderPrice()}
         </div>
-        <Button className="button button--delete" onClick={deleteGameOnClick}>
-          Delete game
-        </Button>
+        <div className="game-card__buttons">
+          <Button className="button button--delete" onClick={deleteGameOnClick}>
+            Delete game
+          </Button>
+          <Button
+            linkTo={`/game-detail/${game._id}`}
+            className="button button--more"
+          >
+            More
+          </Button>
+        </div>
       </div>
     </article>
   );
