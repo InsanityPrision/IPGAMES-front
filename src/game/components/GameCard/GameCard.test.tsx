@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
+import { Provider } from "react-redux";
 import GameCard from "./GameCard";
 import { Game } from "../../types";
-import { Provider } from "react-redux";
 import { store } from "../../../store";
 
 describe("Given the GameCard component", () => {
@@ -24,9 +25,11 @@ describe("Given the GameCard component", () => {
 
     test("Then it should show 'Counter Strike' inside a heading", () => {
       render(
-        <Provider store={store}>
-          <GameCard game={counterStrike} loading="eager" />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <GameCard game={counterStrike} loading="eager" />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const gameName = screen.getByRole("heading", {
@@ -38,9 +41,11 @@ describe("Given the GameCard component", () => {
 
     test("Then it should show a image with the alternative text 'Counter cover'", () => {
       render(
-        <Provider store={store}>
-          <GameCard game={counterStrike} loading="eager" />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <GameCard game={counterStrike} loading="eager" />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const gameImage = screen.getByAltText(/counter cover/i);
@@ -50,9 +55,11 @@ describe("Given the GameCard component", () => {
 
     test("Then it should show a 'Delete game' button", () => {
       render(
-        <Provider store={store}>
-          <GameCard game={counterStrike} loading="eager" />
-        </Provider>,
+        <MemoryRouter>
+          <Provider store={store}>
+            <GameCard game={counterStrike} loading="eager" />
+          </Provider>
+        </MemoryRouter>,
       );
 
       const deleteGameButton = screen.getByRole("button", {

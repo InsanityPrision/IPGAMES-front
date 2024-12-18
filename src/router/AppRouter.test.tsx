@@ -159,7 +159,7 @@ describe("Given the AppRouter component", () => {
     describe("And the user click on 'Delete game' button of Subnautica game and the request fails", () => {
       test("Then it should show a alert with the message 'Failed deleting game'", async () => {
         server.use(
-          http.delete(`${apiUrl}/games/1234`, () => {
+          http.delete(`${apiUrl}/games/1rqwasd`, () => {
             return HttpResponse.json(null, {
               status: 400,
             });
