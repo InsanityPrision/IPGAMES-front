@@ -52,3 +52,7 @@
 .button--delete {
   background-color: #ff0000;
 }
+
+.button--more {
+  font-weight: 400;
+}

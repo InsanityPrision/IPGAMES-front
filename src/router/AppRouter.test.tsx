@@ -217,7 +217,7 @@ describe("Given the AppRouter component", () => {
           </MemoryRouter>,
         );
 
-        const moreButtons = await screen.findAllByRole("button", {
+        const moreButtons = await screen.findAllByRole("link", {
           name: /more/i,
         });
 

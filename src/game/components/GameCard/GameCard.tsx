@@ -1,5 +1,4 @@
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
 import Button from "../../../components/Button/Button";
 import { gamesClient } from "../../client/GamesClient";
 import { Game } from "../../types";
@@ -15,7 +14,6 @@ interface GameCardProps {
 
 const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
   const { loadGames, renderStars } = useGames();
-  const navigate = useNavigate();
 
   const renderPrice = () => {
     return (
@@ -55,10 +53,6 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
     );
   };
 
-  const goToDetailPageOnClick = async () => {
-    await navigate(`/game-detail/${game._id}`);
-  };
-
   return (
     <article className="game-card">
       <img
@@ -83,8 +77,8 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
             Delete game
           </Button>
           <Button
+            linkTo={`/game-detail/${game._id}`}
             className="button button--more"
-            onClick={goToDetailPageOnClick}
           >
             More
           </Button>
