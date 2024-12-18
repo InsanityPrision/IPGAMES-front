@@ -48,7 +48,7 @@ export class GamesClient implements GameClientStructure {
     return game;
   }
 
-  async getById(id: string): Promise<Game> {
+  async getGameById(id: string): Promise<Game> {
     const response = await fetch(`${this.apiRestUrl}/games/${id}`);
 
     if (!response.ok) {
