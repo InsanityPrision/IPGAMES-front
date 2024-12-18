@@ -16,10 +16,6 @@ const GameDetailPage: React.FC = () => {
     try {
       const newGame = await gamesClient.getGameById(_id!);
 
-      if (!newGame) {
-        throw new Error("Failed loading game");
-      }
-
       dispatch(loadGameActionCreator(newGame));
     } catch {
       loadErrorAlert("Failed loading game");

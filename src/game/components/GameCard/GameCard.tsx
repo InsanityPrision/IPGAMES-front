@@ -29,11 +29,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
 
   const deleteGame = async () => {
     try {
-      const deletedGame = await gamesClient.deleteGame(game._id);
-
-      if (!deletedGame) {
-        throw new Error("Failed deleting game");
-      }
+      await gamesClient.deleteGame(game._id);
 
       loadSuccesAlert("Game deleted", "trash");
       loadGames();
@@ -60,7 +56,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
   };
 
   const goToDetailPageOnClick = async () => {
-    navigate(`/game-detail/${game._id}`);
+    await navigate(`/game-detail/${game._id}`);
   };
 
   return (
