@@ -80,7 +80,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, loading }) => {
             linkTo={`/game-detail/${game._id}`}
             className="button button--more"
           >
-            More
+            View details
           </Button>
         </div>
       </div>

@@ -26,14 +26,14 @@ const GameDetail: React.FC<GameDetailProps> = ({ game }) => {
       />
       <div className="game-detail__content">
         <div className="game-detail__header">
-          <h2>{game.name}</h2>
+          <h1 className="game-detail__name">{game.name}</h1>
           <ol className="game-detail__rating">{renderStars(game)}</ol>
           <span
             className={game.isFree ? "game-detail__price" : undefined}
           >{`${gamePrice}`}</span>
         </div>
         <div className="game-detail__genders-section">
-          <h3>Genders</h3>
+          <h2 className="game-detail__genders-title-section">Genders</h2>
           <ul className="game-detail__genders">
             {game.genders.map((gender, index) => {
               return (
@@ -45,15 +45,15 @@ const GameDetail: React.FC<GameDetailProps> = ({ game }) => {
           </ul>
         </div>
         <div>
-          <h3>Description</h3>
+          <h2 className="game-detail__genders-title-section">Description</h2>
           <p>{game.description}</p>
         </div>
         <div className="game-detail__details">
-          <h3>Developer:</h3>
+          <h2 className="game-detail__genders-title-section">Developer:</h2>
           <span>{game.developer}</span>
         </div>
         <div className="game-detail__details">
-          <h3>Date:</h3>
+          <h2 className="game-detail__genders-title-section">Date:</h2>
           <span>{game.date}</span>
         </div>
       </div>
