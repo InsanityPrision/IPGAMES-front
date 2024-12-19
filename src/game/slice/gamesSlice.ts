@@ -3,24 +3,12 @@ import { Game } from "../types";
 
 interface GamesState {
   games: Game[];
-  game: Game;
+  game: Game | null;
 }
 
 const initialGameState: GamesState = {
   games: [],
-  game: {
-    _id: "",
-    name: "",
-    price: 0,
-    isFree: false,
-    rate: 0,
-    description: "",
-    developer: "",
-    date: "",
-    genders: [],
-    imageUrl: "",
-    imageAlt: "",
-  },
+  game: null,
 };
 
 export const gamesSlice = createSlice({
@@ -33,7 +21,7 @@ export const gamesSlice = createSlice({
         games: action.payload,
       };
     },
-    loadGame: (state, action: PayloadAction<Game>) => {
+    loadGame: (state, action: PayloadAction<Game | null>) => {
       return {
         ...state,
         game: action.payload,

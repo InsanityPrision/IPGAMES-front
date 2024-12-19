@@ -10,7 +10,7 @@ import loadErrorAlert from "../../../toast/toastError/loadErrorAlert";
 const GameDetailPage: React.FC = () => {
   const { _id } = useParams<string>();
   const dispatch = useAppDispatch();
-  const game = useAppSelector((state) => state.games.game);
+  const game = useAppSelector((state) => state.gamesState.game);
 
   const loadGame = useCallback(async () => {
     try {
@@ -31,7 +31,13 @@ const GameDetailPage: React.FC = () => {
         icon: <span aria-label="Loading" className="loader"></span>,
       },
     });
-  }, [loadGame]);
+
+    return () => {
+      dispatch(loadGameActionCreator(null));
+    };
+  }, [dispatch, loadGame]);
+
+  useEffect(() => {});
 
   return <GameDetail game={game} />;
 };

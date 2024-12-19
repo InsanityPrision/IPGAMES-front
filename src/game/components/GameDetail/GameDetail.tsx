@@ -3,11 +3,16 @@ import { Game } from "../../types";
 import "./GameDetail.css";
 
 interface GameDetailProps {
-  game: Game;
+  game: Game | null;
 }
 
 const GameDetail: React.FC<GameDetailProps> = ({ game }) => {
   const { renderStars } = useGames();
+
+  if (!game) {
+    return <></>;
+  }
+
   const gamePrice = game.isFree ? "FREE" : `${game.price}$`;
 
   return (
