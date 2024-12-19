@@ -1,6 +1,6 @@
 import useGames from "../../hooks/useGames";
 import { Game } from "../../types";
-import("./GameDetail.css");
+import "./GameDetail.css";
 
 interface GameDetailProps {
   game: Game;
