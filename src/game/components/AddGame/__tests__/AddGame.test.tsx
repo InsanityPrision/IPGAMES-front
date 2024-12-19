@@ -9,23 +9,23 @@ describe("Given the AddGame component", () => {
 
   describe("When rendered", () => {
     test("Then it should show 'Name', 'Price', 'Genders (max:2)', 'Action', 'Shooter' , 'Description' and 'Date'", () => {
+      const fieldsNames = [
+        /name/i,
+        /price/i,
+        /genders \D(max: 2)\D/i,
+        /action/i,
+        /shooter/i,
+        /description/i,
+        /date/i,
+      ];
+
       render(<AddGame sendData={mockSendData} />);
 
-      const nameField = screen.getByLabelText(/name/i);
-      const priceField = screen.getByLabelText(/price/i);
-      const gendersField = screen.getByText(/genders \D(max: 2)\D/i);
-      const actionLabel = screen.getByLabelText(/action/i);
-      const shooterLabel = screen.getByLabelText(/shooter/i);
-      const descriptionField = screen.getByLabelText(/description/i);
-      const dateField = screen.getByLabelText(/date/i);
+      fieldsNames.forEach((fieldName) => {
+        const field = screen.getByText(fieldName);
 
-      expect(nameField).toBeInTheDocument();
-      expect(priceField).toBeInTheDocument();
-      expect(gendersField).toBeInTheDocument();
-      expect(actionLabel).toBeInTheDocument();
-      expect(shooterLabel).toBeInTheDocument();
-      expect(descriptionField).toBeInTheDocument();
-      expect(dateField).toBeInTheDocument();
+        expect(field).toBeInTheDocument();
+      });
     });
 
     test("Then it should show disabled 'Create game' button", () => {
