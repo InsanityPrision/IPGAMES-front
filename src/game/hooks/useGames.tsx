@@ -6,7 +6,7 @@ import loadErrorAlert from "../../toast/toastError/loadErrorAlert";
 import { Game } from "../types";
 
 const useGames = () => {
-  const games = useAppSelector((state) => state.games.games);
+  const games = useAppSelector((state) => state.gamesState.games);
   const dispatch = useAppDispatch();
 
   const loadGames = useCallback(async () => {

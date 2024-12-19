@@ -19,14 +19,14 @@ describe("Given the GameDetailPage component", () => {
       expect(outerWildsTitle).toBeInTheDocument();
     });
 
-    test("Then it shoul show a image with alternative text 'Outer Wilds cover'", () => {
+    test("Then it shoul show a image with alternative text 'Outer Wilds cover'", async () => {
       render(
         <Provider store={store}>
           <GameDetailPage />
         </Provider>,
       );
 
-      const outerWildsImage = screen.getByAltText(/outer wilds cover/i);
+      const outerWildsImage = await screen.findByAltText(/outer wilds cover/i);
 
       expect(outerWildsImage).toBeInTheDocument();
     });
