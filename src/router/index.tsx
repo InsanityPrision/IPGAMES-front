@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from "react-router";
 import { lazy } from "react";
 import GameListPage from "../game/pages/GamesListPage/GamesListPage";
-import App from "../components/App/App";
-import AddGamePage from "../game/pages/AddGamePage/AddGamePage";
 import GameDetailPage from "../game/pages/GameDetailPage/GameDetailPage";
+import App from "../components/App/App";
+
+const AddGamePage = lazy(() => import("../game/pages/AddGamePage/AddGamePage"));
 
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 

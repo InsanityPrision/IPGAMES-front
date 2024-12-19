@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from "react";
-import "./Button.css";
 import { Link } from "react-router";
+import "./Button.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   linkTo?: string;

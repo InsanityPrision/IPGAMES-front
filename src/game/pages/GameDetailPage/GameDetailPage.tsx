@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { toast } from "react-toastify";
 import GameDetail from "../../components/GameDetail/GameDetail";
 import { gamesClient } from "../../client/GamesClient";
 import { loadGame as loadGameActionCreator } from "../../slice/gamesSlice";
 import { useParams } from "react-router";
 import loadErrorAlert from "../../../toast/toastError/loadErrorAlert";
-import { toast } from "react-toastify";
 
 const GameDetailPage: React.FC = () => {
   const { _id } = useParams<string>();
