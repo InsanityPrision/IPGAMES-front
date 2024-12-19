@@ -16,6 +16,8 @@ const GameDetail: React.FC<GameDetailProps> = ({ game }) => {
         className="game-detail__image"
         src={game.imageUrl}
         alt={game.imageAlt}
+        width={450}
+        height={295}
       />
       <div className="game-detail__content">
         <div className="game-detail__header">

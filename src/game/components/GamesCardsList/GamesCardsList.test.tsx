@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import GamesCardsList from "./GamesCardsList";
 import { Game } from "../../types";
 import { store } from "../../../store";
-import { MemoryRouter } from "react-router";
 
 describe("Given the GamesCardsList component", () => {
   describe("When rendered and receives a list of games with titles 'Counter Strike' and 'Outer Wilds'", () => {
