@@ -9,6 +9,7 @@ import "./AddGamePage.css";
 
 const AddGamePage: React.FC = () => {
   const navigate = useNavigate();
+  scroll(0, 0);
 
   const createNewGame = async (gamesData: Omit<Game, "_id">) => {
     try {
