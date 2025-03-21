@@ -239,9 +239,10 @@ describe("Given the AppRouter component", () => {
       test("Then it should show a message 'Failed creating game'", async () => {
         server.use(
           http.post(`${apiUrl}/games`, () => {
-            return HttpResponse.json(null, {
-              status: 409,
-            });
+            return HttpResponse.json(
+              { message: "This game is already in data base" },
+              { status: 409 },
+            );
           }),
         );
 
@@ -252,7 +253,7 @@ describe("Given the AppRouter component", () => {
             </Provider>
           </MemoryRouter>,
         );
-
+        screen.debug();
         await submitAddGame();
 
         const errorAlert = await screen.findByText(/failed creating game/i);
