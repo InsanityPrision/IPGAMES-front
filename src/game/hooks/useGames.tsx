@@ -20,7 +20,11 @@ const useGames = () => {
   }, [dispatch]);
 
   const renderStars = (game: Game) => {
-    const starsNumbers: number[] = Array(game.rate).fill(0);
+    const starsNumbers: number[] = Array(game.rate)
+      .fill(null)
+      .map((_stars, index) => {
+        return index;
+      });
 
     return starsNumbers.map((_starsNumber, index) => {
       return (
