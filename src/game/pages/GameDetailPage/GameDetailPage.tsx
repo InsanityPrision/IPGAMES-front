@@ -37,8 +37,6 @@ const GameDetailPage: React.FC = () => {
     };
   }, [dispatch, loadGame]);
 
-  useEffect(() => {});
-
   return <GameDetail game={game} />;
 };
 
